@@ -1,5 +1,21 @@
+const nodemailer = require('nodemailer'); 
+
 class MailService {
-  async sendActivationMail(to, link) {};
+
+  constructor() {
+    this.transporter = nodemailer.createTransport({
+      host:
+      port:
+      secure: false,  
+      auth: {
+
+      }
+    });
+  }
+
+  async sendActivationMail(to, link) {
+
+  };
 }
 
 module.exports = new MailService();
