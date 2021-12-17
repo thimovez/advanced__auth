@@ -15,7 +15,7 @@ class UserService {
     const activationLink =  uuid.v4();
     // user - это и есть модель
     const user = await UserModel.create({email, password: hashPassword, activationLink});
-    await mailService.sendActivationMail(email, activationLink);
+    await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
     //Создаем екземпляр класса, и передаем в него модель
     const userDto = new UserDto(user); // id, email, isActivated
     const tokens = tokenService.generateTokens({...userDto});
